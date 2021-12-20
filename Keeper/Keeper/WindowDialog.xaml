@@ -1,0 +1,46 @@
+﻿<Window x:Class="Keeper.WindowDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Keeper"
+        mc:Ignorable="d"
+        Title="Закрытие кассы" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <TabControl>
+            <TabItem Header=" ? " BorderBrush="White" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock>Вы уверены что хотите закрыть кассу?</TextBlock>
+                    <WrapPanel Grid.Row="2"  Margin="0,10,0,0" HorizontalAlignment="Center">
+                        <Button IsDefault="True" MinWidth="60" Margin="0,0,10,0" Click="Button_Click" FontSize="12" Foreground="Black" BorderBrush="#FFE6E5E5" Background="White">Да</Button>
+                        <Button IsCancel="True" MinWidth="60" FontSize="12" Foreground="Black" BorderBrush="#FFE6E5E5" Background="White">Нет</Button>
+                    </WrapPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Посмотреть выручку" BorderBrush="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="ListViewRevenue" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="6" FontSize="14" Foreground="Black" BorderBrush="White" Background="White">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=RevenueAmount}" Width="120">Сумма выручки</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=RevenueRatio}" Width="100">Коэффициент</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Date}" Width="78">Дата</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
